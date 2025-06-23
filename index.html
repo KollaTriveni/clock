@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phishing Website Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Phishing Website Detection</h2>
+    <form method="POST" action="/predict">
+        <label>PrefixSuffix:</label>
+        <input type="text" name="PrefixSuffix-" required><br>
+
+        <label>SubDomains:</label>
+        <input type="text" name="SubDomains" required><br>
+
+        <label>HTTPS:</label>
+        <input type="text" name="HTTPS" required><br>
+
+        <label>AnchorURL:</label>
+        <input type="text" name="AnchorURL" required><br>
+
+        <label>WebsiteTraffic:</label>
+        <input type="text" name="WebsiteTraffic" required><br>
+
+        <input type="submit" value="Check Website">
+    </form>
+
+    {% if prediction_text %}
+        <h3>{{ prediction_text }}</h3>
+    {% endif %}
+</body>
+</html>
